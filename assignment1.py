@@ -6,10 +6,10 @@ import pandas as pd
 data = pd.read_csv("https://raw.githubusercontent.com/dustywhite7/econ8310-assignment1/main/assignment_data_train.csv")
 
 # dependant variable
-model = data['trips']
+trips = data['trips']
 
 # model fit with seasonality (not dampened)
-modelFit = ExponentialSmoothing(model, 
+model = ExponentialSmoothing(trips, 
                                 trend='add' ,
                                 seasonal='add', 
                                 seasonal_periods=12).fit()
