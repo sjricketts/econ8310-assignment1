@@ -9,7 +9,7 @@ data = pd.read_csv("https://raw.githubusercontent.com/dustywhite7/econ8310-assig
 trips = data['trips']
 
 # model fit with seasonality (not dampened)
-model = ExponentialSmoothing(trips, 
-                                trend='add' ,
-                                seasonal='add', 
-                                seasonal_periods=12).fit()
+model = ExponentialSmoothing(trips)
+#,                               trend='add' ,
+ #                               seasonal='add', 
+  #                              seasonal_periods=12).fit()
