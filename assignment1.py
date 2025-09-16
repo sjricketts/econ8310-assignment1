@@ -25,4 +25,4 @@ future = modelFit.make_future_dataframe(periods=744,freq='H')
 forecast = modelFit.predict(future)
 
 # convert to list that contains last 744
-pred = forecast['trend'][-744:]
+pred = forecast['trend'][-744:].to_list()
