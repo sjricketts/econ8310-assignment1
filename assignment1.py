@@ -22,4 +22,7 @@ modelFit = model.fit(trips_data)
 future = modelFit.make_future_dataframe(periods=744,freq='H')
 
 # Generate predictions based on that timeline
-pred = modelFit.predict(future)
+forecast = modelFit.predict(future)
+
+# convert to list that contains last 744
+pred = forecast['trend'][-744:]
