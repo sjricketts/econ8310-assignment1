@@ -15,6 +15,7 @@ trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Initialize Prophet instance
 model = Prophet(changepoint_prior_scale=0.1)
 
@@ -30,11 +31,16 @@ model.add_seasonality(name='monthly', period=30.5, fourier_order=5)
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 # Initialize Prophet instance and add seasonality
 model = Prophet(changepoint_prior_scale=0.05, seasonality_mode='additive')
 
 # fit to data
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
