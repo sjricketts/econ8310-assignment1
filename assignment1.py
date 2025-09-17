@@ -17,12 +17,18 @@ trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 
 
 # Initialize Prophet instance; seasonality mode; add yearly/weekly/daily seasonality
+# documentation: https://facebook.github.io/prophet/docs/seasonality,_holiday_effects,_and_regressors.html#prior-scale-for-holidays-and-seasonality
 model = Prophet(changepoint_prior_scale=0.05,
                 seasonality_mode='multiplicative',
                 yearly_seasonality=True,
                 weekly_seasonality=True,
                 daily_seasonality =True,
                 seasonality_prior_scale=10.0)
+
+# Adding monthly seasonality
+# documentation: https://facebook.github.io/prophet/docs/seasonality,_holiday_effects,_and_regressors.html
+# but really just copying and trying everything from the Prophet website at this point
+model.add_seasonality(name='monthly', period=30.5, fourier_order=5)
 
 # fit to data
 modelFit = model.fit(trips_data)
