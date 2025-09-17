@@ -16,6 +16,10 @@ trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 # Initialize Prophet instance
 model = Prophet(changepoint_prior_scale=0.1)
 
+# add holidays
+# documentation: https://facebook.github.io/prophet/docs/seasonality,_holiday_effects,_and_regressors.html
+model.add_country_holidays(country_name='US')
+
 # Adding monthly seasonality
 # documentation: https://facebook.github.io/prophet/docs/seasonality,_holiday_effects,_and_regressors.html
 model.add_seasonality(name='monthly', period=30.5, fourier_order=5)
