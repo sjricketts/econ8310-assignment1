@@ -13,8 +13,14 @@ trips_data['Timestamp'] = pd.to_datetime(trips_data["Timestamp"])
 # Recreate the data frame with correct labels
 trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 
-# Initialize Prophet instance and fit to data
+# Initialize Prophet instance
 model = Prophet(changepoint_prior_scale=0.1)
+
+# Adding monthly seasonality
+# documentation: https://facebook.github.io/prophet/docs/seasonality,_holiday_effects,_and_regressors.html
+model.add_seasonality(name='monthly', period=30.5, fourier_order=5)
+
+# fit data
 modelFit = model.fit(trips_data)
 
 # Create timeline for 744 hours in future
