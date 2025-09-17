@@ -19,9 +19,10 @@ trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 # Initialize Prophet instance; seasonality mode; add yearly/weekly/daily seasonality
 model = Prophet(changepoint_prior_scale=0.05,
                 seasonality_mode='multiplicative',
-               weekly_seasonality=True,
-               daily_seasonality =True,
-               yearly_seasonality=True)
+                yearly_seasonality=True,
+                weekly_seasonality=True,
+                daily_seasonality =True,
+                seasonality_prior_scale=10.0)
 
 # fit to data
 modelFit = model.fit(trips_data)
