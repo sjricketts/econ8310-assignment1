@@ -8,14 +8,18 @@ data = pd.read_csv("https://raw.githubusercontent.com/dustywhite7/econ8310-assig
 
 # grab the two needed columns
 trips_data = data[['Timestamp','trips']]
+
 # convert to datetime
 trips_data['Timestamp'] = pd.to_datetime(trips_data["Timestamp"])
+
 # Recreate the data frame with correct labels
 trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 
 
-# Initialize Prophet instance and add seasonality
-model = Prophet(changepoint_prior_scale=0.05, seasonality_mode='additive')
+# Initialize Prophet instance; seasonality mode; add weekly seasonality
+model = Prophet(changepoint_prior_scale=0.05,
+                seasonality_mode='additive',
+                weekly_seasonality=True)
 
 # fit to data
 modelFit = model.fit(trips_data)
