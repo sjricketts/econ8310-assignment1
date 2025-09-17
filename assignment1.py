@@ -6,44 +6,18 @@ from prophet import Prophet
 # import data
 data = pd.read_csv("https://raw.githubusercontent.com/dustywhite7/econ8310-assignment1/main/assignment_data_train.csv")
 
-# grab the two neede columns
+# grab the two needed columns
 trips_data = data[['Timestamp','trips']]
 # convert to datetime
 trips_data['Timestamp'] = pd.to_datetime(trips_data["Timestamp"])
 # Recreate the data frame with correct labels
 trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-# Initialize Prophet instance
-model = Prophet(changepoint_prior_scale=0.1)
 
-# add holidays
-# documentation: https://facebook.github.io/prophet/docs/seasonality,_holiday_effects,_and_regressors.html
-model.add_country_holidays(country_name='US')
-
-# Adding monthly seasonality
-# documentation: https://facebook.github.io/prophet/docs/seasonality,_holiday_effects,_and_regressors.html
-model.add_seasonality(name='monthly', period=30.5, fourier_order=5)
-
-# fit data
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 # Initialize Prophet instance and add seasonality
 model = Prophet(changepoint_prior_scale=0.05, seasonality_mode='additive')
 
 # fit to data
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 modelFit = model.fit(trips_data)
 
 # Create timeline for 744 hours in future
