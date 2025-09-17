@@ -14,7 +14,7 @@ trips_data['Timestamp'] = pd.to_datetime(trips_data["Timestamp"])
 trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 
 # Initialize Prophet instance and fit to data
-model = Prophet(changepoint_prior_scale=0.01)
+model = Prophet(changepoint_prior_scale=0.05)
 modelFit = model.fit(trips_data)
 
 # Create timeline for 744 hours in future
