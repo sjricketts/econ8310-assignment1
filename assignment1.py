@@ -16,11 +16,12 @@ trips_data['Timestamp'] = pd.to_datetime(trips_data["Timestamp"])
 trips_data = pd.DataFrame(trips_data.values, columns = ['ds','y'])
 
 
-# Initialize Prophet instance; seasonality mode; add weekly/daily seasonality
+# Initialize Prophet instance; seasonality mode; add yearly/weekly/daily seasonality
 model = Prophet(changepoint_prior_scale=0.05,
                 seasonality_mode='additive',
                weekly_seasonality=True,
-               daily_seasonality =True)
+               daily_seasonality =True,
+               yearly_seasonality=True)
 
 # fit to data
 modelFit = model.fit(trips_data)
